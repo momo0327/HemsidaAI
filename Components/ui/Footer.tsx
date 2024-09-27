@@ -35,7 +35,7 @@ function Footer() {
             </h1>
             
             <p className='text-white-200 md:mt-10 my-5 text-center z-10'>
-                redo att revolutionera din arbetsmiljö 
+                Fyll i uppgifterna för att gå med i väntelistan!
             </p>
 
             {/* Form Section */}

@@ -74,24 +74,32 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu (shown when menuOpen is true) */}
-      {menuOpen && (
-        <div className="md:hidden mt-4 space-y-4 flex flex-col justify-center items-center">
-          <Link href="/home" className="block text-white hover:text-blue-400">
+      {/* Mobile Side Menu (shown when menuOpen is true) */}
+      <div
+        className={`fixed top-0 right-0 h-screen w-screen bg-black z-40 transform transition-transform duration-300 ease-in-out ${
+          menuOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex justify-end p-6">
+          <button onClick={toggleMenu} className="text-white text-3xl">
+            <IoMdClose />
+          </button>
+        </div>
+        <div className="flex flex-col items-center space-y-6 mt-10">
+          <Link href="/home" className="block text-white text-2xl hover:text-blue-400">
             Home
           </Link>
-          <Link href="/about" className="block text-white hover:text-blue-400">
+          <Link href="/about" className="block text-white text-2xl hover:text-blue-400">
             About
           </Link>
-          <Link href="/services" className="block text-white hover:text-blue-400">
+          <Link href="/services" className="block text-white text-2xl hover:text-blue-400">
             Services
           </Link>
-          <button className="
-          bg-blue-700 text-white w-full py-2 rounded-lg hover:bg-blue-950">
+          <button className="bg-blue-700 text-white px-8 py-3 rounded-lg hover:bg-blue-950">
             Contact Us
           </button>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
