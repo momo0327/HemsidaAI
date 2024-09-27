@@ -1,25 +1,31 @@
-'use client'
+"use client"; // Add this line
 
 import React, { useState } from 'react';
 import MagicButton from './MagicButton';
 import { FaLocationArrow } from 'react-icons/fa';
+import Image from 'next/image';
 
 function Footer() {
   // State to handle form data
-  const [formData] = useState({
+  const [formData, setFormData] = useState({
     firstName: '',
     email: '',
   });
 
   // Handle form inputs
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   return (
     <footer className='w-full pt-20 pb-10' id='contact'>
         <div className='w-full absolute left-0 -bottom-72 min-h-96'>
-            <img 
-                src="/footer-grid.svg" 
+            <Image 
+                src="/footer-grid.svg"  
                 alt="grid" 
-                className='w-full h-full opacity-80'
+                layout="fill" 
+                objectFit="cover" 
+                className='opacity-80' 
             />
         </div>
 
@@ -46,7 +52,7 @@ function Footer() {
                         type="text" 
                         name="firstName" 
                         value={formData.firstName} 
-                    
+                        onChange={handleChange} // Add onChange handler
                         placeholder="First Name"
                         className='
                         px-4 py-3 rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-blue-600 w-full text-gray-800 bg-black'
@@ -57,6 +63,7 @@ function Footer() {
                         type="email" 
                         name="email" 
                         value={formData.email} 
+                        onChange={handleChange} // Add onChange handler
                         placeholder="Email"
                         className='px-4 py-3 rounded-md border border-white focus:outline-none focus:ring-2 focus:ring-blue-600 w-full text-gray-800 bg-black'
                         required
@@ -64,7 +71,7 @@ function Footer() {
                 </div>
             </form>
 
-            <a href="mailto:dina@example.com"> {/* Updated to 'mailto:' for proper email link */}
+            <a href="mailto:dina@example.com">
                 <MagicButton
                     title='Request Invitation'
                     icon={<FaLocationArrow />}
