@@ -6,7 +6,7 @@ import { FaLocationArrow } from 'react-icons/fa';
 
 function Footer() {
   // State to handle form data
-  const [formData, setFormData] = useState({
+  const [formData] = useState({
     firstName: '',
     email: '',
   });
